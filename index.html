@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="toDo">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>toDo app</title>
+  <style media="screen">
+    .done {text-decoration: line-through; color: #ccc; }
+    li{ list-style-type: none; margin-left: -40px;}
+    input {margin: 0 0 5px 0; }
+  </style>
+</head>
+<body>
+<div  ng-controller="todoCtrl">
+<form name= "frm" ng-submit="addtodo()">
+  <input type="text" name="newtodo" ng-model="newTodo" required />
+  <button ng-disabled="frm.$invalid">Go</button>
+</form>
+  <button ng-click="cleaCompleted()">Clear Completed</button>
+  <ul>
+    <li ng-repeat="todo in todos">
+      <input type="checkbox" ng-model="todo.done" />
+      <span ng-class="{done :todo.done}"> {{todo.title}} </span>
+
+    </li>
+  </ul>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
